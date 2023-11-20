@@ -58,6 +58,5 @@ jobs:
       - name: Build and push Docker image
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker build -t karsajobs:latest .
-          docker tag muhamadanis78/karsajobs:latest ghcr.io/muhamadanis78/karsajobs:latest
+          docker build -t ghcr.io/muhamadanis78/karsajobs:latest .
           docker push ghcr.io/muhamadanis78/karsajobs:latest
