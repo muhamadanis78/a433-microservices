@@ -3,6 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
+      - karsajobs
       - karsajobs-ui
 
 jobs:
@@ -22,27 +23,7 @@ jobs:
       - name: Lint Dockerfile
         run: hadolint Dockerfile
 
-  test-app:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.17
-          
-      - name: Show go version and environment
-        run: |
-          go version
-          env
-
-      - name: Run unit tests
-        run: go test -v -short --count=1 $(go list ./...)
-
-  build-app-karsajobs:
+  build-app-karsajobs-ui:
     runs-on: ubuntu-latest
 
     steps:
